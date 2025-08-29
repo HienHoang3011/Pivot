@@ -41,8 +41,9 @@ The system uses **hybrid search** (vector + text) over MongoDB corpora and the *
 Create a `.env` file in the project root or export them manually:  
 
 - `GOOGLE_API_KEY` — Google GenAI API key  
-- `MONGODB_URI_AMI` — Mongo URI for some agents  
-- `MONGODB_ADMISSION` — Mongo URI for `admission_agent`  
+- `MONGODB_URI` — Mongo URI for `path_learning_agent`  
+- `MONGODB_ADMISSION` — Mongo URI for `admission_agent`
+- `WEATHER_API_KEY` — API key from OpenWeather
 
 ---
 
