@@ -1,0 +1,15 @@
+[project]
+name = "pivot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.116.1",
+    "google-adk>=1.11.0",
+    "litellm>=1.75.8",
+    "numexpr>=2.11.0",
+    "pymongo>=4.14.1",
+    "tzdata>=2025.2",
+    "uvicorn[standard]>=0.35.0",
+]
