@@ -4,14 +4,9 @@ from dotenv import load_dotenv
 import os
 from google import genai
 from concurrent.futures import ThreadPoolExecutor, as_completed
-#from .prompt import admission_agent_instruction
+from .prompt import admission_agent_instruction
+
 load_dotenv()
-# Instruction for the admission agent (kept short and focused)
-admission_agent_instruction = """
-Bạn là tác nhân cung cấp thông tin về tuyển sinh và các thông tin chung của Học viện Công nghệ Bưu chính Viễn thông (PTIT).
-Khi được gọi, trả lời chính xác, súc tích và nếu có thể dẫn nguồn hoặc ghi rõ thời điểm thông tin (năm).
-Chỉ đưa thông tin thực tế, không suy đoán.
-"""
 google_api_key = os.getenv("GOOGLE_API_KEY")
 def connect_to_mongo():
     mongo_uri = os.getenv("MONGODB_ADMISSION")
@@ -78,9 +73,11 @@ def find_similar_documents_by_hybrid_search(
     atlas_search_index: str = "header_text"
 ):
     """
-    Đây là một tool tìm kiếm hybrid để tìm kiếm tài liệu khóa học tương tự sử dụng kết hợp vector search và text search.
-    Sử dụng tool này khi cần tìm kiếm các tài liệu hoặc thông tin liên quan đến tuyển sinh, chương trình hoặc câu hỏi cụ thể,
-    với khả năng tìm kiếm ngữ nghĩa (vector) và tìm kiếm văn bản (text) được thực hiện song song.
+    Tìm kiếm tài liệu liên quan đến tuyển sinh và thông tin về Học viện Công nghệ Bưu chính Viễn thông (PTIT)
+    trong kho dữ liệu bằng hybrid vector + text search. Sử dụng tool này khi người dùng hỏi về:
+    - điều kiện xét tuyển, chỉ tiêu, học phí, lịch tuyển sinh, hồ sơ;
+    - thông tin chương trình/ ngành, cơ sở đào tạo hoặc liên hệ trường;
+    Hàm sẽ kết hợp tìm kiếm ngữ nghĩa (embedding) và tìm kiếm văn bản để trả về các tài liệu phù hợp đã được format.
 
     Parameters:
         query (str): Câu truy vấn mô tả thông tin cần tìm (ví dụ: "điều kiện xét tuyển PTIT", "địa chỉ campus Hà Nội").
