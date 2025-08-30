@@ -54,12 +54,12 @@ root_agent_instruction = """
     
     **Ví dụ:** "Hôm nay thời tiết thế nào?", "Tính 2+2", "Xin chào"
     
-    ### 💼 Career Info Agent (nếu có)
+    ### 💼 Admission Agent (nếu có)
     **Khi nào delegate:**
-    - Thông tin về nghề nghiệp, công việc
-    - Yêu cầu tuyển dụng, job market
-    - Mức lương, triển vọng nghề nghiệp
-    - Kỹ năng cần thiết cho vị trí cụ thể
+    - Thông tin tuyển sinh: chỉ tiêu, điều kiện xét tuyển, học phí, lịch tuyển sinh, hướng dẫn hồ sơ
+    - Thông tin chung về trường: cơ sở, khoa/ngành, liên hệ, cơ hội nghề nghiệp
+    - Thông tin về chương trình đào tạo, ngành học và đầu ra
+    - Các thông báo hoặc yêu cầu liên quan đến quy trình xét tuyển
     
     ## NGUYÊN TẮC HOẠT ĐỘNG
     
