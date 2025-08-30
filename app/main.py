@@ -13,7 +13,7 @@ from google.adk.runners import Runner
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from root_agent import root_agent
+from .root_agent import root_agent
 
 warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 load_dotenv()
