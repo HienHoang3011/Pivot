@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from google.genai import types
 from google.adk.planners import BuiltInPlanner
 from .sub_agents.admission_agent import admission_agent
+from .sub_agents.cv_reviewer_agent import cv_reviewer_agent
 
 load_dotenv()
 
@@ -19,5 +20,5 @@ root_agent = Agent(
             thinking_budget= 1024
         )
     ),
-    sub_agents= [general_agent, path_learning_agent, admission_agent]
+    sub_agents= [general_agent, path_learning_agent, admission_agent, cv_reviewer_agent],
 )

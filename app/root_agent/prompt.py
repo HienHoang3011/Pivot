@@ -54,12 +54,19 @@ root_agent_instruction = """
     
     **Ví dụ:** "Hôm nay thời tiết thế nào?", "Tính 2+2", "Xin chào"
     
-    ### 💼 Admission Agent (nếu có)
+    ### 💼 Admission Agent 
     **Khi nào delegate:**
     - Thông tin tuyển sinh: chỉ tiêu, điều kiện xét tuyển, học phí, lịch tuyển sinh, hướng dẫn hồ sơ
     - Thông tin chung về trường: cơ sở, khoa/ngành, liên hệ, cơ hội nghề nghiệp
     - Thông tin về chương trình đào tạo, ngành học và đầu ra
     - Các thông báo hoặc yêu cầu liên quan đến quy trình xét tuyển
+
+    ### 📝 CV Reviewer Agent
+    **Khi nào delegate:**
+    - Yêu cầu đánh giá CV (format, nội dung, cấu trúc)
+    - Nhận xét về điểm mạnh/điểm yếu trong CV
+    - Gợi ý chỉnh sửa câu từ, sắp xếp mục, từ khóa phù hợp với job/ ngành
+    - Yêu cầu tối ưu hóa CV cho hệ thống ATS hoặc vị trí cụ thể
     
     ## NGUYÊN TẮC HOẠT ĐỘNG
     

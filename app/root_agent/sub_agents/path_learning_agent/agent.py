@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 import os
 from google import genai
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from .prompt import path_learning_agent_instruction
+from .prompt import path_learning_agent_instruction, google_search_agent_instruction
+from google.adk.tools import google_search
+from google.adk.tools import AgentTool
 load_dotenv()
 google_api_key = os.getenv("GOOGLE_API_KEY")
 def connect_to_mongo():
@@ -185,13 +187,23 @@ def find_similar_documents_by_hybrid_search(
                 "message": "Tìm kiếm thành công (fallback)"
             }
         except Exception as fallback_e:
-            return {"status": "error", "message": str(fallback_e)}
+            return {"status": "error", "message": str(fallback_e)}\
+                
+google_search_agent = Agent(
+    name = "google_search_agent",
+    model = "gemini-2.5-flash",
+    description= "Tác nhân tìm kiếm thông tin trên Google để hỗ trợ các tác nhân khác",
+    instruction = google_search_agent_instruction,
+    tools= [google_search],
+    disallow_transfer_to_parent=True
+)
+google_search = AgentTool(agent=google_search_agent)
         
 path_learning_agent = Agent(
     name = "path_learning_agent",
     model = "gemini-2.5-flash",
     description= "Tác nhân đề xuất các khóa học trên Coursera để người dùng tham khảo và định hướng tốt hơn",
     instruction = path_learning_agent_instruction,
-    tools = [find_similar_documents_by_hybrid_search],
+    tools = [find_similar_documents_by_hybrid_search, google_search],
     disallow_transfer_to_parent=True
 )
